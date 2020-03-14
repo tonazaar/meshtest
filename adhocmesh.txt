@@ -1,0 +1,5 @@
+
+https://medium.com/swlh/setting-up-an-ad-hoc-mesh-network-with-raspberry-pi-3b-using-batman-adv-1c08ee565165
+
+
+After this command, both dhcpcd and wpa_supplicant services will cease to run. This is needed, since these services manipulate the ad-hoc mesh network configurations that effectively breaks the network. An advanced setup should compromise with these services, but this tutorial will not cover such a setup. In addition I also disable hostapd just to be sure, but you may regressively try to enable above services with the necessary configurations after having a working base. Following snippet sets up a password-free ad-hoc connection on each node:

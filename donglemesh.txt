@@ -1,0 +1,8 @@
+
+
+sudo apt install libnl-3-dev libnl-genl-3-dev
+git clone https://git.open-mesh.org/batctl.git
+cd batctl
+sudo make install
+sudo apt-get install alfred
+Above snippet finishes the prerequisites installation. Since we are using Raspberry Pi 3B+, the onboard Wi-Fi module supports IBSS(Ad-Hoc) interface mode, therefore an external Wi-Fi dongle is not required.
