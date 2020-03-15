@@ -54,3 +54,14 @@ https://www.open-mesh.org/projects/batman-adv/wiki/Understand-your-batman-adv-ne
 
 
 https://www.systutorials.com/docs/linux/man/8-batctl/
+
+
+Install
+
+https://wiki.archlinux.org/index.php/GNU#Toolchain
+pacman base-devel
+
+
+------------------------------------------
+
+
