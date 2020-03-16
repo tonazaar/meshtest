@@ -1,0 +1,87 @@
+
+
+A) Basic test setup with batmand 
+
+laptop(no internet) -> RSP(1) -> RSP(2) -> Internet
+
+Mesh between RSP(1) - RSP(2)
+Mesh between RSP(1) - RSP(2) - RSP(3)
+
+
+B) References
+
+https://medium.com/swlh/setting-up-an-ad-hoc-mesh-network-with-raspberry-pi-3b-using-batman-adv-1c08ee565165
+https://www.open-mesh.org/projects/open-mesh/wiki/Routing_scenarios
+https://www.open-mesh.org/projects/batmand/wiki/BATMAN_Daemon_HowTo
+https://www.open-mesh.org/projects/batmand/wiki/InternetTuning
+https://www.open-mesh.org/projects/batmand/wiki/VisualizeMesh
+
+C) Note
+
+1) After this command, both dhcpcd and wpa_supplicant services will cease to run. This is needed, since these services manipulate the ad-hoc mesh network configurations that effectively breaks the network. An advanced setup should compromise with these services, but this tutorial will not cover such a setup. In addition I also disable hostapd just to be sure, but you may regressively try to enable above services with the necessary configurations after having a working base. Following snippet sets up a password-free ad-hoc connection on each node:
+
+
+2) In contrast to other routing protocols each batman node only knows the path to its single hop neighbors and knows nothing about the topology behind it. In practice it means that a batman node S is aware of node A which is somewhere in the mesh and reachable via neighbor B but it does not know about the number of hops and / or nodes in between.
+
+
+D) Installation
+
+ sudo pacman -Sy batctl
+
+
+E) Announcement
+
+https://www.open-mesh.org/projects/batmand/wiki/AnnouncingNetworks
+
+Adding the announcement for e.g. the local network:
+
+batmand -c -a 192.168.1.0/24
+Adding multiple announcements in one go:
+
+batmand -c -a 192.168.1.0/24 -a 192.168.100.123/32
+Revoking an announcement:
+
+batmand -c -A 192.168.1.0/24
+Revoking multiple announcements in one go:
+
+batmand -c -A 192.168.1.0/24 -A 192.168.100.123/32
+
+F) Batmand kernel setup
+
+https://www.open-mesh.org/projects/batmand/wiki/Faq
+What is the batgat kernel module good for?
+The batman daemon maintains a tunnel connection to every "batman internet client". Every packet that goes to the internet or comes back has to go through this tunnel. As it is a user space tunnel a lot of copying between user space and kernel land is necessary. Depending on the number of clients and the CPU power available this might be a bottleneck.
+The batgat kernel module tries to overcome this limitation. 
+
+
+G) Batmand man page
+
+https://downloads.open-mesh.org/batman/manpages/batmand.8.html
+
+EXAMPLES
+       batmand eth1 wlan0:test
+              Start batman daemon on interface "eth1" and on  alias  interface
+              "wlan0:test"
+
+       batmand -o 2000 -a 192.168.100.1/32 -a 10.0.0.0/24 eth1
+              Start batman daemon on interface "eth1" with originator interval
+              of 2000 ms while announcing 192.168.100.1 and 10.0.0.0/24.
+
+       batmand -s 192.168.1.1 -d 1 eth1
+              Start batman daemon on interface "eth1", sending topology infor-
+              mation to 192.168.1.1 and with debug level 1 (does not fork into
+              the background).
+
+       batmand eth1 && batmand -c -d 1 -b
+              Start batman daemon on interface "eth1". Connect in client  mode
+              to get the debug level 1 output once (batch mode).
+
+       batmand -g 2000kbit/500kbit eth1 && batmand -c -r 1
+              Start  batman  daemon  on  interface "eth1" as internet gateway.
+              Connect in client mode to disable the internet gateway  and  en-
+              able internet search mode.
+
+
+
+
+

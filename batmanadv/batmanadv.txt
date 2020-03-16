@@ -1,0 +1,102 @@
+Below references have methods to use used batman-adv for giving layer-2 mesh
+It also - has reference to allowing others to connect
+- You can also see visual of how it is used
+https://github.com/suiluj/pi-adhoc-mqtt-cluster/wiki/Batman-Adv-and-Batctl  (U3)
+https://www.open-mesh.org/projects/batman-adv/wiki/Quick-start-guide (U2)
+https://www.open-mesh.org/projects/batman-adv/wiki/Batman-adv-openwrt-config
+https://www.open-mesh.org/doc/batman-adv/Building-with-openwrt.html
+https://www.open-mesh.org/projects/batman-adv/wiki/Quick-start-guide
+https://www.open-mesh.org/projects/open-mesh/wiki
+https://www.open-mesh.org/doc/open-mesh/Download.html#building-openwrt-packages (B2)
+https://www.open-mesh.org/doc/batman-adv/Building-with-openwrt.html (B2)
+https://www.reddit.com/r/darknetplan/comments/68s6jp/how_to_configure_batmanadv_on_the_raspberry_pi_3/
+https://www.open-mesh.org/projects/batman-adv/wiki/Doc-overview (U4) (U5)
+https://www.open-mesh.org/projects/batman-adv/wiki/Gateways (U5) 
+https://www.open-mesh.org/projects/batman-adv/wiki/Multi-link-optimize (U6)
+https://www.open-mesh.org/projects/open-mesh/wiki/Experience (E1)
+https://downloads.open-mesh.org/batman/papers/batman-adv_v_intro.pdf (E2)
+
+Useful reference is
+https://medium.com/swlh/setting-up-an-ad-hoc-mesh-network-with-raspberry-pi-3b-using-batman-adv-1c08ee565165
+https://medium.com/@tdoll/how-to-setup-a-raspberry-pi-ad-hoc-network-using-batman-adv-on-raspbian-stretch-lite-dce6eb896687
+
+U2) Mixing non-B.A.T.M.A.N. systems with batman-adv
+If you have a couple of computers that you don't want to run batman-adv on but you still want make use of the mesh network,
+
+B2) Build setup
+pacman etc
+
+
+U3) Without internet ..
+
+U4) Alfred is used for Visuiaization
+
+
+U5) Gateway support - How batman-adv can be used to choose the nearest internet gateway node.
+
+
+U6) Link optimization
+
+
+E1) Experience
+
+E2) Presentation
+
+
+
+Experiments
+
+
+
+https://medium.com/swlh/setting-up-an-ad-hoc-mesh-network-with-raspberry-pi-3b-using-batman-adv-1c08ee565165
+
+
+After this command, both dhcpcd and wpa_supplicant services will cease to run. This is needed, since these services manipulate the ad-hoc mesh network configurations that effectively breaks the network. An advanced setup should compromise with these services, but this tutorial will not cover such a setup. In addition I also disable hostapd just to be sure, but you may regressively try to enable above services with the necessary configurations after having a working base. Following snippet sets up a password-free ad-hoc connection on each node:
+
+
+ sudo pacman -Sy batctl
+
+
+https://github.com/suiluj/pi-adhoc-mqtt-cluster/wiki/Batman-Adv-and-Batctl
+
+Create startup script
+In your default user folder /home/pi create a file for the script: sudo nano batsetup-rpi.sh:
+
+iw wlan0 set type ibss
+ip link set wlan0 up
+
+iw wlan0 ibss join <adhocnetworkname> 2432 key d:2:<password>
+# replace <adhocnetworkname> with a ssid for example: rpiadhoc
+# replace <password> with a password of length 5 or 13 (WEP) for example: abcdefghijklm
+
+modprobe batman-adv
+batctl if add wlan0
+
+ip link set up dev wlan0
+ip link set up dev bat0
+
+batctl gw_mode client # optional if there is a gateway for internet in your network
+
+sleep 10
+alfred -i bat0 -m -p 1 &
+sleep 10
+batadv-vis -i bat0 -s &
+
+
+
+
+
+https://www.open-mesh.org/projects/open-mesh/wiki/Routing_scenarios
+
+
+----------------------------------
+
+https://www.open-mesh.org/projects/batman-adv/wiki/Wiki
+
+
+https://www.open-mesh.org/projects/batman-adv/wiki/Quick-start-guide
+
+
+-------------------------------------------
+
+

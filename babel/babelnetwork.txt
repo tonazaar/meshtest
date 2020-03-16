@@ -1,0 +1,32 @@
+May be good for wifi hoping 
+
+https://www.irif.fr/~jch/software/babel/babeld.html
+
+
+https://www.irif.fr/~jch/software/babel/
+
+Installation
+
+sudo pacman -Sy babeld
+
+You can participate in a Babel network by simply running
+# babeld wlan0
+where wlan0 is the name of your wireless interface.
+In order to gateway between multiple interfaces, just list them all on the command line:
+# babeld wlan0 eth0 sit1
+On an access point, you'll probably want to redistribute some external routes into Babel:
+# babeld \ 
+-C 'redistribute metric 256' \ 
+wlan0
+or, if you want to constrain the routes that you redistribute,
+# babeld \ 
+-C 'redistribute proto 11 ip ::/0 le 64 metric 256' \ 
+-C 'redistribute proto 11 ip 0.0.0.0/0 le 24 metric 256' \ 
+wlan0
+
+
+https://openwrt.org/docs/guide-user/services/babeld
+
+https://openwrt.org/packages/pkgdata_lede17_1/babeld
+
+https://github.com/openwrt-routing/packages/blob/master/babeld/files/babeld.config
