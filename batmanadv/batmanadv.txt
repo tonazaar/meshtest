@@ -1,7 +1,6 @@
 1) Batman-adv for mesh setup
-
-Batman-adv provides layer-2 connectivity.  The references show various methods of using. A visualization tool is also provided to show mesh configuration
-
+Batman-adv provides layer-2 connectivity. The references show various methods of using. 
+A visualization tool is also provided to show mesh configuration
 
 2) Reference 
 https://github.com/suiluj/pi-adhoc-mqtt-cluster/wiki/Batman-Adv-and-Batctl  (U3)
@@ -21,14 +20,14 @@ https://downloads.open-mesh.org/batman/papers/batman-adv_v_intro.pdf (E2)
 https://www.open-mesh.org/projects/open-mesh/wiki/Routing_scenarios
 https://www.open-mesh.org/projects/batman-adv/wiki/Wiki
 https://www.open-mesh.org/projects/batman-adv/wiki/Quick-start-guide
+https://medium.com/swlh/setting-up-an-ad-hoc-mesh-network-with-raspberry-pi-3b-using-batman-adv-1c08ee565165 (U1)
+https://medium.com/@tdoll/how-to-setup-a-raspberry-pi-ad-hoc-network-using-batman-adv-on-raspbian-stretch-lite-dce6eb896687 (U1)
 
 B1) Downloading setup
 
 B2) Build batman-adv
 
 U1) Sample of usage
-https://medium.com/swlh/setting-up-an-ad-hoc-mesh-network-with-raspberry-pi-3b-using-batman-adv-1c08ee565165
-https://medium.com/@tdoll/how-to-setup-a-raspberry-pi-ad-hoc-network-using-batman-adv-on-raspbian-stretch-lite-dce6eb896687
 
 U2) Mixing non-B.A.T.M.A.N. systems with batman-adv
 If you have a couple of computers that you don't want to run batman-adv on but you still want make use of the mesh network,
@@ -37,7 +36,7 @@ U3) Getting access to internet though MESH
 
 U4) Alfred is used for Visuiaization
 
-U5) Gateway support - How batman-adv can be used to choose the nearest internet gateway node.
+U5) How batman-adv can be used to choose the nearest internet gateway node.
 
 U6) Link optimization
 
@@ -45,14 +44,10 @@ E1) Experience
 
 E2) Presentation
 
-
-
 3) Notes
-
-After this command, both dhcpcd and wpa_supplicant services will cease to run. This is needed, since these services manipulate the ad-hoc mesh network configurations that effectively breaks the network. An advanced setup should compromise with these services, but this tutorial will not cover such a setup. In addition I also disable hostapd just to be sure, but you may regressively try to enable above services with the necessary configurations after having a working base. Following snippet sets up a password-free ad-hoc connection on each node:
+Both dhcpcd and wpa_supplicant services need to be stopped. This is needed, since these services manipulate the ad-hoc mesh network configurations that effectively breaks the network. An advanced setup should compromise with these services, but this tutorial will not cover such a setup. In addition I also disable hostapd just to be sure, but you may regressively try to enable above services with the necessary configurations after having a working base. Following snippet sets up a password-free ad-hoc connection on each node:
 
 https://medium.com/swlh/setting-up-an-ad-hoc-mesh-network-with-raspberry-pi-3b-using-batman-adv-1c08ee565165
-
 
 4) Basic mesh setup
 https://github.com/suiluj/pi-adhoc-mqtt-cluster/wiki/Batman-Adv-and-Batctl
@@ -79,9 +74,4 @@ sleep 10
 alfred -i bat0 -m -p 1 &
 sleep 10
 batadv-vis -i bat0 -s &
-
-
-
-
-
 
