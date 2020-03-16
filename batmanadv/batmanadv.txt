@@ -1,7 +1,6 @@
 1) Batman-adv for mesh setup
 
-- It also has reference to allowing others to connect
-- You can also see visual of how it is used
+Batman-adv provides layer-2 connectivity.  The references show various methods of using. A visualization tool is also provided to show mesh configuration
 
 
 2) Reference 
@@ -11,7 +10,7 @@ https://www.open-mesh.org/projects/batman-adv/wiki/Batman-adv-openwrt-config
 https://www.open-mesh.org/doc/batman-adv/Building-with-openwrt.html
 https://www.open-mesh.org/projects/batman-adv/wiki/Quick-start-guide
 https://www.open-mesh.org/projects/open-mesh/wiki
-https://www.open-mesh.org/doc/open-mesh/Download.html#building-openwrt-packages (B2)
+https://www.open-mesh.org/doc/open-mesh/Download.html#building-openwrt-packages (B1)
 https://www.open-mesh.org/doc/batman-adv/Building-with-openwrt.html (B2)
 https://www.reddit.com/r/darknetplan/comments/68s6jp/how_to_configure_batmanadv_on_the_raspberry_pi_3/
 https://www.open-mesh.org/projects/batman-adv/wiki/Doc-overview (U4) (U5)
@@ -23,9 +22,11 @@ https://www.open-mesh.org/projects/open-mesh/wiki/Routing_scenarios
 https://www.open-mesh.org/projects/batman-adv/wiki/Wiki
 https://www.open-mesh.org/projects/batman-adv/wiki/Quick-start-guide
 
-B2) Build setup
+B1) Downloading setup
 
-U1) Sample setup
+B2) Build batman-adv
+
+U1) Sample of usage
 https://medium.com/swlh/setting-up-an-ad-hoc-mesh-network-with-raspberry-pi-3b-using-batman-adv-1c08ee565165
 https://medium.com/@tdoll/how-to-setup-a-raspberry-pi-ad-hoc-network-using-batman-adv-on-raspbian-stretch-lite-dce6eb896687
 
