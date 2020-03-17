@@ -3,6 +3,11 @@ Babel is a loop-avoiding distance-vector routing protocol roughly based on DSDV 
 but with provisions for link cost estimation and redistribution of routes from other routing protocols.
 While it is optimised for wireless mesh networks, Babel will also work efficiently on wired networks.
 
+Note(issue, see man page)
+Babel is a completely insecure protocol: any attacker able to inject IP
+packets with a link-local source address can disrupt the protocol's op-
+eration.   This  is  no different from unsecured neighbour discovery or
+ARP.
 
 2) References
 https://www.irif.fr/~jch/software/babel/babeld.html
