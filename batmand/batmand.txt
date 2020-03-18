@@ -67,3 +67,71 @@ EXAMPLES
               Connect in client mode to disable the internet gateway  and  en-
               able internet search mode.
 
+
+Work
+
+1)  wget \
+> https://downloads.open-mesh.org/batman/stable/sources/batman/batman-0.3.tar.gz
+
+
+2) tar xzvf batman-0.3.tar.gz
+
+
+3) make
+
+4) cp batmand /usr/sbin/
+cp: cannot create regular file '/usr/sbin/batmand': Permission denied
+[alarm@alarmpi batman-0.3]$ sudo cp batmand /usr/sbin/
+[sudo] password for alarm: 
+[alarm@alarmpi batman-0.3]$ batmand eth0
+Error - you must be root to run batmand !
+[alarm@alarmpi batman-0.3]$ sudo batmand eth0
+Interface activated: eth0
+Using interface eth0 with address 10.42.0.66 and broadcast address 10.42.0.255
+
+5) Hanging
+
+Experiment-1
+sudo batmand wlan0:test
+[sudo] password for alarm: 
+Not using interface wlan0:test (retrying later): interface not active
+[alarm@alarmpi ~]$ nmcli connection       
+NAME                UUID                                  TYPE      DEVICE 
+local-ap            0613852f-685f-4bd9-805d-26ac101c3ddf  wifi      wlan0  
+Wired connection 1  73459040-78ec-3e2d-9fe8-7e62a6088dec  ethernet  eth0   
+
+-> AP connection fine
+
+Experiment-2
+sudo batmand wlan0:test
+Deleting default route via unknown (table 67)
+Deleting default route via unknown (table 67)
+Error - unknown rta type: 14 
+Error - unknown rta type: 21 
+Not using interface wlan0:test (retrying later): interface not active
+
+Experiment-3
+Wlan0 up,
+sudo nmcli connection up Jio123
+Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/4)
+[alarm@alarmpi ~]$ sudo batmand wlan0:test
+Deleting default route via unknown (table 67)
+Deleting default route via unknown (table 67)
+Error - unknown rta type: 14 
+Error - unknown rta type: 21 
+Not using interface wlan0:test (retrying later): interface not active
+[alarm@alarmpi ~]$  nmcli connection          
+NAME                UUID                                  TYPE      DEVICE 
+Wired connection 1  73459040-78ec-3e2d-9fe8-7e62a6088dec  ethernet  eth0   
+Jio123              13607a69-c41e-4fd3-9433-fba559994710  wifi      wlan0  
+AndroidAPramesh     f208b009-d44d-4c0a-843e-5a7a06e6c303  wifi      --     
+
+ip a
+
+wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether dc:a6:32:60:95:4a brd ff:ff:ff:ff:ff:ff
+    inet 192.168.29.203/24 brd 192.168.29.255 scope global dynamic noprefixroute wlan0
+       valid_lft 3466sec preferred_lft 3466sec
+    inet 192.168.88.1/24 brd 192.168.88.255 scope global noprefixroute wlan0
+
+
