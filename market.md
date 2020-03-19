@@ -29,6 +29,10 @@ https://www.howtogeek.com/290418/what-are-mesh-wi-fi-systems-and-how-do-they-wor
 [![Explains cost of setup ](https://img.youtube.com/vi/P0MSbJYRHU8/0.jpg)](https://www.youtube.com/watch?v=P0MSbJYRHU8 "Explains cost ")
 
 <img src="images/one.png" alt="Cost text" width="400">
+<img src="images/two.png" alt="Cost text" width="400">
+<img src="images/three.png" alt="Cost text" width="400">
+<img src="images/four.png" alt="Cost text" width="400">
+<img src="images/five.png" alt="Cost text" width="400">
 
 
 
