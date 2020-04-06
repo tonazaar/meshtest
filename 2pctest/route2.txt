@@ -1,0 +1,8 @@
+https://help.ubuntu.com/community/Internet/ConnectionSharing (useful-1)
+
+https://www.howtoforge.com/internet-connection-sharing-masquerading-on-linux (useful-2)
+
+http://www.techytalk.info/internet-connection-sharing-without-network-manager-on-ubuntu-linux/ (u-3)
+
+https://askubuntu.com/questions/13993/how-to-connect-a-wired-internet-connection-through-terminal (u-4)
+
